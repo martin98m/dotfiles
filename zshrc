@@ -86,7 +86,6 @@ plugins=(
 	git-lfs
 	gitignore
 	golang
-	nestjs
 	nmap
 	node
 	npm

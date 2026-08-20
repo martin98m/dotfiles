@@ -11,10 +11,10 @@ fi
 
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 
-# Install powerlevel10k theme if missing
-if [ ! -d "$ZSH_CUSTOM/themes/powerlevel10k" ]; then
+# Install powerlevel10k theme if missing (matches ~/.zshrc source path)
+if [ ! -d "$HOME/powerlevel10k" ]; then
   echo "Installing powerlevel10k..."
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$ZSH_CUSTOM/themes/powerlevel10k"
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/powerlevel10k"
 fi
 
 # Install zsh-autosuggestions plugin if missing
@@ -26,5 +26,11 @@ fi
 # Symlink dotfiles
 ln -sf "$DIR/zshrc" "$HOME/.zshrc"
 ln -sf "$DIR/p10k.zsh" "$HOME/.p10k.zsh"
+
+# Set zsh as default shell if not already
+if [ "$SHELL" != "$(which zsh)" ]; then
+  echo "Setting zsh as default shell..."
+  chsh -s "$(which zsh)" "$(whoami)" 2>/dev/null || sudo chsh -s "$(which zsh)" "$(whoami)"
+fi
 
 echo "Done. Open a new terminal to see changes."
