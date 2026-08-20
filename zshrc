@@ -95,8 +95,8 @@ plugins=(
 	redis-cli
 	ssh
 	tailscale
-	tmux
 	vscode
+	tmux
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -114,6 +114,7 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='nvim'
 # fi
+export EDITOR='vi'
 
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
