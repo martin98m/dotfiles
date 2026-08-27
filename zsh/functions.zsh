@@ -47,3 +47,8 @@ gsubinit() {
   echo -e "\033[2m→ git submodule update --init --recursive\033[0m"
   git submodule update --init --recursive
 }
+
+gsubdeinit() {
+  echo -e "\033[2m→ git submodule deinit --all\033[0m"
+  git submodule deinit --all
+}
