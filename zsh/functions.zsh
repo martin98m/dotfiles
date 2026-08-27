@@ -42,3 +42,8 @@ gsquashundo() {
   echo -e "\033[2m→ git reset --soft ORIG_HEAD\033[0m"
   git reset --soft ORIG_HEAD
 }
+
+gsubinit() {
+  echo -e "\033[2m→ git submodule update --init --recursive\033[0m"
+  git submodule update --init --recursive
+}
