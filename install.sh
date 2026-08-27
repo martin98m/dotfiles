@@ -71,7 +71,9 @@ ln -sf "$DIR/bin/git-install-local-guard" "$HOME/.local/bin/git-install-local-gu
 # Set zsh as default shell if not already
 if [ "$SHELL" != "$(which zsh)" ]; then
   echo "Setting zsh as default shell..."
-  chsh -s "$(which zsh)" "$(whoami)" 2>/dev/null || sudo chsh -s "$(which zsh)" "$(whoami)"
+  chsh -s "$(which zsh)" "$(whoami)" < /dev/null 2>/dev/null ||
+    sudo chsh -s "$(which zsh)" "$(whoami)" < /dev/null 2>/dev/null ||
+    echo "Warning: could not set zsh as default shell; do it manually."
 fi
 
 echo "Done. Open a new terminal to see changes."
