@@ -3,7 +3,7 @@ set -e
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-OMZ_DIR="$DIR/oh-my-zsh"
+OMZ_DIR="$DIR/zsh/oh-my-zsh"
 ZSH_CUSTOM="$OMZ_DIR/custom"
 P10K_DIR="$ZSH_CUSTOM/themes/powerlevel10k"
 
@@ -53,15 +53,20 @@ fi
 # reads it from there); it just points ZDOTDIR at ~/.config/zsh, so the real
 # zshrc lives under XDG_CONFIG_HOME like everything else.
 mkdir -p "$HOME/.config/zsh" "$HOME/.config/tmux"
-ln -sf "$DIR/zshenv" "$HOME/.zshenv"
-ln -sf "$DIR/zshrc" "$HOME/.config/zsh/.zshrc"
-ln -sf "$DIR/tmux.conf" "$HOME/.config/tmux/tmux.conf"
+ln -sf "$DIR/zsh/zshenv" "$HOME/.zshenv"
+ln -sf "$DIR/zsh/zshrc" "$HOME/.config/zsh/.zshrc"
+ln -sf "$DIR/zsh/zprofile" "$HOME/.config/zsh/.zprofile"
+ln -sf "$DIR/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
 
 # Clean up symlinks left by older versions of this script that pointed
 # straight into $HOME.
 for f in "$HOME/.zshrc" "$HOME/.p10k.zsh" "$HOME/.tmux.conf"; do
   [ -L "$f" ] && rm -f "$f"
 done
+
+# Symlink personal scripts
+mkdir -p "$HOME/.local/bin"
+ln -sf "$DIR/bin/git-install-local-guard" "$HOME/.local/bin/git-install-local-guard"
 
 # Set zsh as default shell if not already
 if [ "$SHELL" != "$(which zsh)" ]; then
