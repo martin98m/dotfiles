@@ -146,3 +146,7 @@ export NVM_DIR="$HOME/.nvm"
 
 
 [[ ! -f "$DOTFILES_DIR/functions.zsh" ]] || source "$DOTFILES_DIR/functions.zsh"
+
+# Machine-local secrets (API tokens, etc.) live outside the dotfiles repo.
+[[ ! -f "$ZDOTDIR/local.zsh" ]] || source "$ZDOTDIR/local.zsh"
+

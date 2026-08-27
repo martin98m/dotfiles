@@ -2,4 +2,5 @@
 # or not), unlike zshrc which only runs for interactive shells. PATH needs to
 # live here so GUI apps that resolve their environment via a login shell
 # (e.g. VS Code) pick it up too.
+eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
