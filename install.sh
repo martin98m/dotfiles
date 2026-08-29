@@ -67,6 +67,7 @@ done
 # Symlink personal scripts
 mkdir -p "$HOME/.local/bin"
 ln -sf "$DIR/bin/git-install-local-guard" "$HOME/.local/bin/git-install-local-guard"
+ln -sf "$DIR/bin/git-profile" "$HOME/.local/bin/git-profile"
 
 # Set zsh as default shell if not already
 if [ "$SHELL" != "$(which zsh)" ]; then

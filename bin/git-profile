@@ -1,0 +1,35 @@
+#!/bin/bash
+set -euo pipefail
+
+usage() {
+    echo "Usage: git profile <work|personal>" >&2
+    exit 1
+}
+
+[[ $# -eq 1 ]] || usage
+
+profile="$1"
+
+case "$profile" in
+    work)
+        name="Martin Mucha"
+        email="mucha@bart.sk"
+        ;;
+    personal)
+        name="Martin Mucha"
+        email="martin98m@gmail.com"
+        ;;
+    *)
+        usage
+        ;;
+esac
+
+git rev-parse --git-dir >/dev/null 2>&1 || {
+    echo "Error: not inside a git repository." >&2
+    exit 1
+}
+
+git config --local user.name "$name"
+git config --local user.email "$email"
+
+echo "Set local git config for this repo to $profile: $name <$email>"
