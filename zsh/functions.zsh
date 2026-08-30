@@ -52,3 +52,8 @@ gsubdeinit() {
   echo -e "\033[2m→ git submodule deinit --all\033[0m"
   git submodule deinit --all
 }
+
+gwips() {
+  echo -e "\033[2m→ git stash push --include-untracked --message wip\033[0m"
+  git stash push --include-untracked --message "wip"
+}
